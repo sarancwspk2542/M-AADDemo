@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Upload File";
+}
+<h1 style="color:white">@ViewData["Title"]</h1>
+
+@if (User.IsInRole("Admin"))
+{
+<form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Privacy">
+    <div class="form-group">
+        <div class="col-md-10">
+            <input style="color:white" type="file" name="file" />
+        </div>
+    </div>
+    <div class="form-group">
+        <input  type="submit" value="Upload file" />
+    </div>
+    <div class="form-group">
+        <span style="color:white">@TempData["msg"]</span>
+    </div>
+</form>
+}

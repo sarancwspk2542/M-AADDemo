@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AADDemo.Models.FileModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table.center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+
+<body>
+    <img src="/Files/m365.jpg" alt="m365" width="300">
+    <h2 style="color:white">Welcome To M365 M-AADDemo</h2>
+    <h5></h5>
+    <div id="myCarousel" class="carousel slide center" data-ride="carousel" data-interval="6000">
+
+        <table class="table table-bordered " style="border-color:black">
+            <tr>
+                <th style="color:white">File Name</th>
+                <th style="color:white">Download File</th>
+                <th style="color:white">Delete</th>
+            </tr>
+            @foreach (FileModel file in Model)
+        {
+            <tr>
+                <td style="color:white">@file.FileName</td>
+                <td style="color:lightblue"><a href="/Home/DownloadFile?filename=@file.FileName">Download</a></td> <!-- Download File--->
+                <td style="color:lightblue"><a href="@Url.Action("Delete","Home",new { imgdel=file.FileName})">Delete</a></td> <!--Delete File-->
+            </tr>
+        }
+        </table>
+    </div>
+</body>
